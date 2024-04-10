@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">	
+    <title>Show letter grade</title>
+    <!--Bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body class="bg-dark">
+    <div class="container-fluid ">
+      <div class="col d-flex justify-content-center">
+              <div class="card mt-5" style="width: 25rem;">
+                <a href="letter_grade.html" type="button" class="btn btn-sm btn-success">Try Again &#x21bb;</a>  
+                  <div class="card-body">
+                  <h5 class="card-title">v1.2 Thanks for using the number grades to letter 
+                    grades converter!</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Built By Navjot Singh</h6>
+                  <p class="card-text"><strong>Purpose:</strong> This program will convert 
+                      the numbers between 0-100 to corresponding letter grade system. <br>
+                    <hr>
+                      <code>
+                      A 88-100 |
+                      B 80-87 |
+                      C 68-79 |
+                      D 60-67 |
+                      F < 60
+                    </code>
+                    </p>
+                    <strong>What's new ?</strong>
+                      <ul class="list-group ">
+                        <li class="list-group-item p-1">Allow a number grade from 0 through 100</li>
+                        <li class="list-group-item p-1">Application end if 999 or above</li>
+                        <li class="list-group-item p-1">Allow multiple entries and conversions without restart</li>
+                        <li class="list-group-item p-1">If the entry is invalid, starting prompt dialog box appears</li>
+                      </ul>
+                      <a href="convert_temps_enhanced.html"  class="card-link float-left mt-3">&laquo; Previous</a>  
+                    <a href="sum_numbers.html" class="card-link float-right mt-3" >Try Sum Numbers &raquo;</a>
+                  </div>
+              </div>
+      </div>
+  </div>
+
+    <!--Js code start from here-->
+    <script>
+    	/* v1.2
+           Convert number grades to letter grades
+        */
+        
+        //Calling processor function on page load
+        processor();
+
+        /* This function helps to take input from the user */
+        function processor() { 
+            //Prompt init on page load and accept int value
+            var NG = parseInt(prompt('Enter number grade from 0 to 100 \nOr enter 999 to end entires : '));
+            NG_LG_converter(NG); //call NG_LG_converter and passing parameter         
+        }
+       
+        /* This function will help to validate and compare number with grades */
+        function NG_LG_converter(NG) {
+   
+          if(!parseInt(NG)){ //checking if parameter is empty or any string!  
+            processor(); //restart the process without giving error
+          } else { //when values satisfied
+            
+              if (NG < 0) { //checking if parameter is negetive integer
+               processor(); //restart the process without display the error
+              }else if (NG > 100){ //checking if parameter is greater than qual 100
+
+                if (NG >= 999) { //checking if parameter is greater than equal 999
+                  return 0; //end the application
+                }
+                processor(); //restart the process without display the error
+
+              }
+              else{ //if range satisfied between 0 to 100
+
+                 if (NG < 60) { //checking if parameter is less than 60
+                      alert('Number Grade =' + NG + '\nLetter Grade = F');  
+                      processor(); //restart the process without display the error
+                 } else if (NG >= 60 && NG <= 67) { //checking if parameter is lied under 60-67
+                      alert('Number Grade =' + NG + '\nLetter Grade = D');  
+                      processor();
+                 }else if (NG >= 68 && NG <= 79) { //checking if parameter is lied under 68-79 
+                        alert('Number Grade =' + NG + '\nLetter Grade = C');    
+                      processor();
+                 }else if (NG >= 80 && NG <= 87) { //checking if parameter is lied under 80-87
+                        alert('Number Grade =' + NG + '\nLetter Grade = B');    
+                      processor();
+                 }else if (NG >= 88 && NG <= 100) { //checking if parameter is lied under 88-100 
+                        alert('Number Grade =' + NG + '\nLetter Grade = A');   
+                      processor();
+                  }      
+              }
+           }
+            
+        }
+         
+    </script>
+</body>
+</html>
